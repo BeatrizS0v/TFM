@@ -1,0 +1,18 @@
+.map{
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+.cls-1{
+    fill: var(--color-fondo-2);
+}
+.cls-2{
+    fill: var(--color-primario);
+}
+/* unir provincias iguales */
+.cls-1:hover{
+    fill: var(--color-acento);
+}
+.selected{
+    fill: var(--color-acento)
+}

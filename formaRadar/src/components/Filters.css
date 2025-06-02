@@ -1,0 +1,62 @@
+.cont_filters{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-texto);
+}
+.column-1{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 50px;
+}
+.column-2{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-left: 30px;
+}
+/* estilos de los selectores simples */
+select{
+    width: 300px;
+    height: 40px;
+    margin: 10px;
+    background-color: var(--color-fondo-2);
+    color: var(--color-texto);
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* estilos del selector de precio */
+.select_price{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+.select_price label{
+    margin: 0 0 20px 0;
+}
+.select_price input[type="range"] {
+  width: 100%;
+  height: 6px;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+
+/* estilos */
+.limpiar_filtros{
+    cursor: pointer;
+}
+.map{
+    height: 280px;
+}

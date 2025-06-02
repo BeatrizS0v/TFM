@@ -1,0 +1,56 @@
+.multi_select{
+    width: 300px;
+    position: relative;
+    margin-bottom: 0px;
+}
+.select_box{
+    position: relative;
+    cursor: pointer;
+}
+.select_multiple{
+    width: 100%;
+    padding: 3px 5px;
+    border-radius: 4px;
+}
+.over_select{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+.options{
+    position: absolute;
+    z-index: 2;
+    width: 300px;
+    top: 100%;
+    left: 0;
+    margin-left: 11px;
+    border: 1px solid white;
+    background-color: var(--color-fondo-2);
+    border-radius: 4px;
+    overflow-y: scroll;
+    max-height: 500%;
+}
+.options label{
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 3px;
+}
+.options label:hover{
+    background-color: var(--color-acento);
+    color: var(--color-fondo-2);
+}
+.option{
+    width: 20px;
+    height: 20px;
+    margin: 3px 5px;
+    display: inline-block;
+    cursor: pointer;
+    accent-color: var(--color-primario);
+}
+
+
+

@@ -1,0 +1,83 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.filterbar{
+    position: fixed;
+    top: 0;
+    background-color: var(--color-fondo-1);
+    width: 100vw;
+    box-shadow: 0 0 5px 0.5px var(--color-primario);
+    z-index: 100;
+}
+.bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.icon{
+    fill: var(--color-primario);
+}
+.icon_profile{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin: 20px 40px 20px 0px;
+    object-fit: fill;
+    padding: 0;
+    cursor: pointer;
+}
+.icon_map{
+    height: 50px;
+    width: 40px;
+}
+.logo{
+    height: 70px;
+    width: 300px;
+    margin: 5px 0px 5px 10px;
+    object-fit: contain;
+    cursor: pointer;
+}
+.num{
+    height: 22px;
+    width: 22px;
+    background-color: var(--color-acento);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 8px;
+    right: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.locations{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+}
+.filters{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+.icon_filter{
+    height: 40px;
+}
+.access:hover{
+    background-color: rgb(59, 76, 94);
+    cursor: pointer;
+    border-radius: 50%;
+}
+.window_map{
+    position: absolute;
+    top: 100px;
+    right: -60px;
+    height: 250px;
+    width: 300px;
+}
