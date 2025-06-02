@@ -76,7 +76,6 @@ export const useFilteredStudies = () => {
   });
     setFilteredStudies(results);
     setNumResults(results.length);
-    console.log("filtrados en hook", results);
   }, [searchTerm, selectedAreas, selectedCenter, selectedModality, selectedYears, maxPrice, selectedLocations, studies]);
 
   return { filteredStudies, loading, error, numFilters, numResults };

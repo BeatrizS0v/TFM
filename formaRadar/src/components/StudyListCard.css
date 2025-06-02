@@ -86,10 +86,6 @@
 .icon_star{
     width: 35px;
 }
-.icon_bookmark{
-    width: 35px;
-    cursor: pointer;
-}
 .rate{
     font-size: large;
     font-weight: 700;
@@ -103,4 +99,32 @@
     align-items: center;
     width: 50px;
     height: 50px;
+}
+.comment{
+    height: 300px;
+    border: 1px solid white;
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+.comment_title{
+    margin: 20px 0px;
+}
+.comment-button{
+    margin-top: 120px;
+}
+
+/* estilos bookmark */
+.icon_bookmark{
+    width: 35px;
+    cursor: pointer;
+}
+.relleno{
+    fill:rgba(192, 192, 255, 0)
+}
+.icon_bookmark:hover .relleno{
+   fill: var(--color-primario);
+}
+.favorito{
+    fill: var(--color-primario);
 }

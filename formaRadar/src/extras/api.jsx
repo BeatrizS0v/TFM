@@ -73,8 +73,8 @@ export const createStudy = async (study) => {
 
 //========Comments==============
 
-// Obtener comments by ID
-export const get = async (id) => {
+// Obtener comments by ID de estudio
+export const getComments = async (id) => {
   const res = await fetch(`${BASE_URL}/comments/${id}`);
   if (!res.ok) throw new Error('Error al cargar comentario');
   return res.json();
