@@ -1,6 +1,19 @@
 .login{
-    width: 80%;
+    width: 100%;
     margin: 10px 0px;
     text-align: left;
     padding-left: 15px;
+}
+.cont_login{
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    justify-content: center;
+}
+.formu{
+       display: flex;
+    flex-direction: column;
+    align-items: center ;
+    justify-content: center; 
+    width: 250px;
 }

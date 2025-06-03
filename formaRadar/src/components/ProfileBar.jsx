@@ -15,9 +15,9 @@ const ProfileBar = ({closeProfile}) => {
             </div>
             <img className='icono_web' src={logo} alt='Logo de la web'></img>
             {user ? <Profile /> : <Login />}
-            <label class="switch">
+            <label className="switch">
                 <input type="checkbox"/>
-                <span class="slider round"></span>
+                <span className="slider round"></span>
             </label>
         </div>
     );

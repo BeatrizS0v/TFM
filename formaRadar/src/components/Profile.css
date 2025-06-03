@@ -48,7 +48,7 @@
 .cab_fav{
     background-color: var(--color-secundario);
     height: 50px;
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,10 +56,17 @@
     z-index: 3;
     cursor: pointer;
 }
+.cab_fav:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 10px 1px var(--color-primario);
+}
+Link{
+    all: unset;
+}
 .aps_fav{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     overflow-y: scroll;
     scrollbar-width: none;
     height: 310px;
@@ -67,14 +74,13 @@
 .ap_fav{
     background-color: var(--color-fondo-2);
     height: 100px;
-    width: 70%;
-    margin-right: 30px;
+    width: 80%;
+    padding: 20px;
+    margin-right: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 23px;
-    transform: translateY(0px); 
-    /* 60px */
 }
 .signout{
     position: absolute;

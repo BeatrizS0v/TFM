@@ -34,7 +34,7 @@ const FiltersComponent = () => {
         />
         <select onChange={(e) => updateCenter(e.target.value)} value={selectedCenter}>
           <option value="">Todos los tipos de centros</option>
-          <option value="publico">Público</option>
+          <option value="público">Público</option>
           <option value="privado">Privado</option>
         </select>
         <select onChange={(e) => updateModality(e.target.value)} value={selectedModality}>

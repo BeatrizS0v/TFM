@@ -7,6 +7,7 @@ import VListFavourites from "./views/VListFavourites";
 import VLanding from "./views/VLanding";
 import { AuthProvider } from "./hooks/AuthContext";
 import { FilterProvider } from "./hooks/FilterContext.jsx";
+import Profile from "./components/Profile.jsx";
 
 function App() {
   return (
@@ -18,10 +19,10 @@ function App() {
             <Route path="/" element={<VLanding />} />
             <Route path="/studies" element={<VListStudies />} />
             <Route path="/studies/:id" element={<VStudy />} />
-            <Route
-              path="/studies/favousites/:id"
-              element={<VListFavourites />}
-            />
+              <Route
+                path="/studies/favourites/:id"
+                element={<VListFavourites />}
+              />
           </Routes>
         </FilterProvider>
       </AuthProvider>

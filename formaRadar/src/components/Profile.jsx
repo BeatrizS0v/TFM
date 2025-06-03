@@ -3,6 +3,8 @@ import './Profile.css'
 import { useContext, useEffect, useState} from 'react';
 import { AuthContext } from '../hooks/AuthContext';
 import {getFavouritesById} from '../extras/api';
+import { Link } from 'react-router-dom';
+import Login from './Login';
 
 const Profile = () => {
     const {user, logout} = useContext(AuthContext);
@@ -13,9 +15,9 @@ const Profile = () => {
         logout();
     };
 
-    const dropDownFavs=()=>{
-        console.log("dropdown");
-    };
+    // const dropDownFavs=()=>{
+    //     console.log("dropdown");
+    // };
 
     useEffect(()=>{
         const getData=async()=>{
@@ -61,12 +63,14 @@ const Profile = () => {
                 <p className='text_perfil'>Correo electrónico: {user.email}</p>
             </div>
             <div className='favourites'>
-                <div className='cab_fav' onClick={dropDownFavs()}>Estudios Favoritos</div>
+                <Link to={`studies/favourites/${user.user_id}`}  style={{ all: "unset", width: "80%"}}>
+                <div className='cab_fav' >VER ESTUDIOS FAVORITOS</div></Link>
                 <div className='aps_fav'>
                     {infoFavs()}
                 </div>
             </div>
             <p className='button signout text_perfil' onClick={handleLogout}>Cerrar sesión</p>
+            
         </div>
     );
 };

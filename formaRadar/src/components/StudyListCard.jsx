@@ -1,10 +1,9 @@
 import react from "../assets/react.svg";
+import React from "react";
 import "./StudyListCard.css";
 import { Link } from "react-router-dom";
-import { useFavsComs } from "../hooks/useFavsComs";
 
-const StudyListCard = ({ data }) => {
-  const {rate, numComments}= useFavsComs(data.study_id);
+const StudyListCard = React.memo(({ data, rate, numComments }) => {
   return (
     <div className="card card_list grid-item">
       <div>
@@ -70,6 +69,6 @@ const StudyListCard = ({ data }) => {
       <div className="etiqueta">{data.type}</div>
     </div>
   );
-};
+});
 
 export default StudyListCard;

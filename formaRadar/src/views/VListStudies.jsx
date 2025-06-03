@@ -1,8 +1,14 @@
 import StudyListCard from "../components/StudyListCard";
 import { useFilteredStudies } from "../hooks/useFilteredStudies";
+import { useComments } from "../hooks/useComments";
+
+import { useMemo } from "react";
+
 
 const VListStudies = () => {
-    const { filteredStudies, loading, error } = useFilteredStudies();
+  const { filteredStudies, loading, error } = useFilteredStudies();
+  const studyIds = useMemo(() => filteredStudies.map(s => s.study_id), [filteredStudies]);
+  const commentsData = useComments(studyIds);
 
   return (
     <div
@@ -20,11 +26,15 @@ const VListStudies = () => {
             {error && <p>Error: {error}</p>}
            {" "}
       {filteredStudies.map((study) => (
-        <StudyListCard key={study.study_id} data={study}/>
+        <StudyListCard
+          key={study.study_id}
+          data={study}
+          rate={commentsData[study.study_id]?.rate}
+          numComments={commentsData[study.study_id]?.numComments}
+        />
       ))}
          {" "}
     </div>
-
   );
 };
 

@@ -3,14 +3,21 @@
     justify-content: space-around;
 }
 .card_study_f{
-    background-color: var(--color-fondo-1);
     color: var(--color-texto);
-    width: 50%;
+    width: 600px;
+    margin: 120px 20px !important;
     position: relative;
+}
+.info_study p{
+    text-align:justify;
+    margin: 10px 30px;
 }
 .catch{
     display: flex;
     justify-content: center;
+    box-shadow: none;
+    border: none;
+    background-color: none;
 }
 .circle{
     height: 10px;
@@ -20,7 +27,10 @@
     margin: 7px 2px;
 }
 .title_study_f{
-    margin: 20px 0px;
+    margin: 20px 20px;
+}
+.info_study{
+    margin: 5px 20px;
 }
 .text_study_f{
     text-align: left;
@@ -29,9 +39,14 @@
 .columns{
     display: flex;
     justify-content: space-between;
+    margin: 10px 40px;
 }
-.text_study_right{
+.text_study_right p{
     text-align: right;
+    margin: 5px 35px;
+}
+.text_study_left p{
+    text-align: left;
     margin: 5px 40px;
 }
 .voltear{
@@ -52,4 +67,37 @@
 }
 .voltear:hover .arrow{
     fill: var(--color-acento)
+}
+
+/* voltear */
+.flip-container {
+  perspective: 1000px;
+}
+
+.flipper {
+  position: relative;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: 0.6s;
+}
+
+.flipped .flipper {
+  transform: rotateY(180deg);
+}
+
+.front, .back {
+  backface-visibility: hidden;
+  position: absolute;
+            height: 700px;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.front {
+  z-index: 2;
+}
+
+.back {
+  transform: rotateY(180deg);
 }
