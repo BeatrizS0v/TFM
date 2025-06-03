@@ -7,7 +7,7 @@ export const FilterProvider = ({ children }) => {
   const [selectedAreas, setAreas] = useState([]);
   const [selectedCenter, setCenter] = useState("");
   const [selectedModality, setModality] = useState("");
-  const [selectedYears, setDuration] = useState([]);
+  const [selectedType, setType] = useState([]);
   const [maxPrice, setMaxPrice] = useState(50);
   const [selectedLocations, setLocations] = useState([]);
 
@@ -15,7 +15,7 @@ export const FilterProvider = ({ children }) => {
   const updateAreas = (value) => setAreas(value);
   const updateCenter = (value) => setCenter(value);
   const updateModality = (value) => setModality(value);
-  const updateDuration = (value) => setDuration(value);
+  const updateType = (value) => setType(value);
   const updateMaxPrice = (value) => setMaxPrice(value);
   const updateLocations = (value) => setLocations(value);
 
@@ -23,7 +23,7 @@ export const FilterProvider = ({ children }) => {
   const updateTermSearch = (name) => setSearch(name);
 
   return (
-      <FilterContext.Provider value={{ searchTerm, selectedAreas, selectedCenter, selectedModality, selectedYears, maxPrice, selectedLocations, updateAreas, updateCenter, updateDuration, updateLocations, updateMaxPrice, updateModality, updateTermSearch }}>
+      <FilterContext.Provider value={{ searchTerm, selectedAreas, selectedCenter, selectedModality, selectedType, maxPrice, selectedLocations, updateAreas, updateCenter, updateType, updateLocations, updateMaxPrice, updateModality, updateTermSearch }}>
         {children}
       </FilterContext.Provider>
   );

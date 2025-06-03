@@ -20,4 +20,10 @@ button:hover{
   transform: scale(1.05);
   box-shadow: 0 0 10px 1px var(--color-primario);
 }
+.light-mode{
+  --color-fondo-1: #E1F7FF;
+  --color-fondo-2: white;
+  --color-texto:#001114;
+}
+
 

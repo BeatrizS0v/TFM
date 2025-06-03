@@ -3,7 +3,7 @@ import "./Filters.css";
 import MultiSelect from "./Multiselect";
 import Map from "./Map";
 import { optionsKnowledge_area } from "../extras/filtros";
-import { optionsDuration } from "../extras/filtros";
+import { optionsType } from "../extras/filtros";
 import { optionsLocations } from "../extras/filtros";
 import { FilterContext } from "../hooks/FilterContext.jsx";
 
@@ -12,13 +12,13 @@ const FiltersComponent = () => {
     selectedAreas,
     selectedCenter,
     selectedModality,
-    selectedYears,
+    selectedType,
     maxPrice,
     selectedLocations,
     updateAreas,
     updateCenter,
     updateModality,
-    updateDuration,
+    updateType,
     updateMaxPrice,
     updateLocations,
     updateTermSearch
@@ -31,6 +31,7 @@ const FiltersComponent = () => {
           options={optionsKnowledge_area}
           value={selectedAreas}
           onChange={updateAreas}
+          info="Todas las áreas de conocimiento"
         />
         <select onChange={(e) => updateCenter(e.target.value)} value={selectedCenter}>
           <option value="">Todos los tipos de centros</option>
@@ -43,9 +44,10 @@ const FiltersComponent = () => {
           <option value="aDistancia">A distancia</option>
         </select>
         <MultiSelect
-          options={optionsDuration}
-          value={selectedYears}
-          onChange={updateDuration}
+          options={optionsType}
+          value={selectedType}
+          onChange={updateType}
+          info="Todos los tipos de estudios"
         />
         <div className="select_price">
           <label>Precio máximo (und. crédito): {maxPrice}€</label>
@@ -67,6 +69,7 @@ const FiltersComponent = () => {
           options={optionsLocations}
           value={selectedLocations}
           onChange={updateLocations}
+          info="Todo el país"
         />
 
         <p
@@ -74,7 +77,7 @@ const FiltersComponent = () => {
             updateAreas([]);
             updateCenter("");
             updateModality("");
-            updateDuration([]);
+            updateType([]);
             updateMaxPrice(50);
             updateLocations([]);
             updateTermSearch("");

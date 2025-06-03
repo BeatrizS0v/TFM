@@ -8,7 +8,7 @@
     margin: 120px 20px !important;
     position: relative;
 }
-.info_study p{
+.info_study_fav p{
     text-align:justify;
     margin: 10px 30px;
 }
@@ -29,7 +29,10 @@
 .title_study_f{
     margin: 20px 20px;
 }
-.info_study{
+.title_study_f:hover{
+    color:var(--color-primario);
+}
+.info_study_fav{
     margin: 5px 20px;
 }
 .text_study_f{

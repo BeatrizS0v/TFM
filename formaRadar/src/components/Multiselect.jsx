@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./MultiSelect.css";
 
-const MultiSelect = ({ options, value=[], onChange }) => {
+const MultiSelect = ({ options, value=[], onChange, info }) => {
   const [expanded, setExpanded] = useState(false);
   const [selected, setSelected] = useState([]);
   const wrapperRef = useRef(null);
@@ -48,7 +48,7 @@ const MultiSelect = ({ options, value=[], onChange }) => {
           <option>
             {selected.length > 0
               ? selected.join(", ")
-              : "Todas las áreas de conocimiento"}
+              : info}
           </option>
         </select>
         <div className="over_select"></div>

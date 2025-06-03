@@ -17,7 +17,7 @@ export const useFilteredStudies = () => {
     selectedModality,
     selectedLocations,
     maxPrice,
-    selectedYears
+    selectedType
   } = useContext(FilterContext);
 
 
@@ -37,7 +37,7 @@ export const useFilteredStudies = () => {
     };
 
     fetchStudies();
-  }, [searchTerm, selectedAreas, selectedCenter, selectedModality, selectedLocations, maxPrice, selectedYears]);
+  }, [searchTerm, selectedAreas, selectedCenter, selectedModality, selectedLocations, maxPrice, selectedType]);
   //se cuenta el número de filtros
   useEffect(()=>{
     let num=0;
@@ -48,13 +48,13 @@ export const useFilteredStudies = () => {
         num++;
     if(selectedModality!=="")
         num++;
-    num=num+selectedYears.length;
+    num=num+selectedType.length;
     if(maxPrice!==50)
         num++;
     num+=selectedLocations.length;
 
     setNumFilters(num);
-  }, [searchTerm, selectedAreas, selectedCenter, selectedModality, selectedYears, maxPrice, selectedLocations]);
+  }, [searchTerm, selectedAreas, selectedCenter, selectedModality, selectedType, maxPrice, selectedLocations]);
   
   //se establecen los filtros
   useEffect(() => {
@@ -65,18 +65,18 @@ export const useFilteredStudies = () => {
         : true;
       const centerType = selectedCenter ? study.type_of_institution.toLowerCase() === selectedCenter: true;
       const modality = selectedModality ? study.modality.toLowerCase() === selectedModality: true;
-      const duration = selectedYears.length>0 
-        ? selectedYears.includes(study.duration)
+      const type = selectedType.length>0 
+        ? selectedType.includes(study.type)
         : true;
       const price = study.price <= maxPrice;
       const location = selectedLocations.length>0 
         ? selectedLocations.includes(study.location)
         : true;
-      return name && knowledgeArea && centerType && modality && duration && price && location;
+      return name && knowledgeArea && centerType && modality && type && price && location;
   });
     setFilteredStudies(results);
     setNumResults(results.length);
-  }, [searchTerm, selectedAreas, selectedCenter, selectedModality, selectedYears, maxPrice, selectedLocations, studies]);
+  }, [searchTerm, selectedAreas, selectedCenter, selectedModality, selectedType, maxPrice, selectedLocations, studies]);
 
   return { filteredStudies, loading, error, numFilters, numResults };
 };

@@ -20,13 +20,12 @@
     { value: "Educación y Formación", label: "Educación y Formación" },
   ];
 
-  export   const optionsDuration = [
-    { value: "1", label: "1 año" },
-    { value: "2", label: "2 años" },
-    { value: "3", label: "3 años" },
-    { value: "4", label: "4 años" },
-    { value: "5", label: "5 años" },
-    { value: "6", label: "6 años" },
+  export   const optionsType = [
+    { value: "Grado", label: "Grado" },
+    { value: "Máster", label: "Máster" },
+    { value: "FP Básica", label: "FP Básica" },
+    { value: "FP Media", label: "FP Media" },
+    { value: "FP Superior", label: "FP Superior" },
   ];
 
 export const optionsLocations = [

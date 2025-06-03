@@ -4,9 +4,11 @@ import './ProfileBar.css'
 import Login from './Login';
 import Profile from './Profile';
 import { AuthContext } from '../hooks/AuthContext';
+import { ColorContext } from '../hooks/ColorContext';
 
 const ProfileBar = ({closeProfile}) => {
     const { user } = useContext(AuthContext);
+    const { lightMode, togglelightMode } = useContext(ColorContext);
 
     return (
         <div className='inicio'>
@@ -16,7 +18,7 @@ const ProfileBar = ({closeProfile}) => {
             <img className='icono_web' src={logo} alt='Logo de la web'></img>
             {user ? <Profile /> : <Login />}
             <label className="switch">
-                <input type="checkbox"/>
+                <input type="checkbox" checked={lightMode} onChange={togglelightMode}/>
                 <span className="slider round"></span>
             </label>
         </div>
