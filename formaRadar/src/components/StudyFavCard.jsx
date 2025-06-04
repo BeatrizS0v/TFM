@@ -1,9 +1,31 @@
 import "./StudyFavCard.css";
-import { useState } from "react";
+import { useContext, useEffect, useState} from 'react';
+import { AuthContext } from '../hooks/AuthContext';
+import Favourite from "../components/Favourite.jsx";
 import { Link } from "react-router-dom";
+import CommentCarousel from "./CommentCarousel";
+import { getComments } from "../extras/api";
 
 const StudyFavCard = ({ data }) => {
   const [side, setSide] = useState(true);
+  const [dataComments, setDataComments]=useState([]);
+    const {favs} = useContext(AuthContext);
+
+    useEffect(() => {
+      const fetchComments = async () => {
+
+        try {
+          const comments= await getComments(data.study_id)
+          setDataComments(comments);
+        } catch (err) {
+          setError(err.message);
+        } finally {
+
+        }
+      };
+      fetchComments();
+      
+    }, [data]);
 
   return (
     <div className="fav">
@@ -25,6 +47,9 @@ const StudyFavCard = ({ data }) => {
               >
                 <h2>{data.study}</h2>
               </Link>
+              <div className="bookmark_study" style={{marginTop: "5px"}}>
+            <Favourite id_fav={favs.fav_id} dataStudy={data}/>
+          </div>
             </div>
             <p className="text_study_f">
               <strong>Ubicación: </strong>
@@ -68,9 +93,13 @@ const StudyFavCard = ({ data }) => {
                 </p>
                 <p>
                   <strong>Precio: </strong>
-                  {data.price}
+                  {data.price}€
                 </p>
               </div>
+            </div>
+            <div className="carousel_fav">
+              <p><strong>Reseñas:</strong></p>
+              <CommentCarousel comments={dataComments} carousel_id={`carousel-${data.study_id}`}/>
             </div>
             <div className="voltear" onClick={() => setSide(false)}>
               <svg
@@ -106,6 +135,9 @@ const StudyFavCard = ({ data }) => {
               >
                 <h2>{data.study}</h2>
               </Link>
+              <div className="bookmark_study" style={{marginTop: "5px"}}>
+            <Favourite id_fav={favs.fav_id} dataStudy={data}/>
+          </div>
             </div>
             <div className="info_study_fav">
               <h3>Centro:</h3>

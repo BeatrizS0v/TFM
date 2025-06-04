@@ -1,0 +1,14 @@
+/* estilos bookmark */
+.icon_bookmark{
+    width: 35px;
+    cursor: pointer;
+}
+.relleno{
+    fill:rgba(192, 192, 255, 0)
+}
+.icon_bookmark:hover .relleno{
+   fill: var(--color-primario);
+}
+.favorito{
+    fill: var(--color-primario);
+}

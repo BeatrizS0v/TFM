@@ -4,6 +4,7 @@ body{
 .cont{
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
 }
 .card_v_study{
     background-color: var(--color-fondo-1);
@@ -11,6 +12,7 @@ body{
     border-radius: 20px;
     width: 80%;
     box-shadow: 0 0 10px 1px var(--color-primario);
+    padding-bottom: 50px;
 }
 .title_study_b{
     padding: 30px 20px;

@@ -102,7 +102,6 @@
 }
 .comment{
     height: 300px;
-    border: 1px solid white;
     width: 50%;
     display: flex;
     align-items: center;
@@ -114,17 +113,3 @@
     margin-top: 120px;
 }
 
-/* estilos bookmark */
-.icon_bookmark{
-    width: 35px;
-    cursor: pointer;
-}
-.relleno{
-    fill:rgba(192, 192, 255, 0)
-}
-.icon_bookmark:hover .relleno{
-   fill: var(--color-primario);
-}
-.favorito{
-    fill: var(--color-primario);
-}

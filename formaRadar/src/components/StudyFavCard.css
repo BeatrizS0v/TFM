@@ -28,6 +28,12 @@
 }
 .title_study_f{
     margin: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.bookmark_study{
+    margin-right: 30px;
+    padding-top: 16px;
 }
 .title_study_f:hover{
     color:var(--color-primario);
@@ -52,6 +58,15 @@
     text-align: left;
     margin: 5px 40px;
 }
+/* estilos de comentarios */
+.carousel_fav{
+    margin-right: 30px;
+}
+.carousel_fav p{
+    margin-left: 40px;
+}
+
+/* estilos de voltear */
 .voltear{
     position: absolute;
     top: 0;
@@ -74,7 +89,14 @@
 
 /* voltear */
 .flip-container {
-  perspective: 1000px;
+  perspective: 2000px;
+  width: 600px;
+  height: 800px;
+  position: relative;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  z-index: 10;
 }
 
 .flipper {
@@ -82,6 +104,7 @@
   width: 100%;
   transform-style: preserve-3d;
   transition: 0.6s;
+  transform-origin: center center;
 }
 
 .flipped .flipper {
@@ -91,13 +114,14 @@
 .front, .back {
   backface-visibility: hidden;
   position: absolute;
-            height: 700px;
+  height: 700px;
   width: 100%;
   top: 0;
   left: 0;
 }
 
 .front {
+
   z-index: 2;
 }
 
