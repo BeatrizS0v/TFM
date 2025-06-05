@@ -1,0 +1,64 @@
+.cont_loading{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+}
+.loading {
+    height: 120px;
+    margin-top: 150px;
+}
+
+.gorro {
+    fill: #16afd1;
+}
+
+.linea {
+    stroke: #16afd1;
+    stroke-width: 1.4px;
+}
+
+.linea,
+.circulo {
+    fill: none;
+    stroke-miterlimit: 10;
+}
+
+.radar {
+    fill: url(#Degradado_sin_nombre_2);
+    transform-origin: 50% 50%;
+    animation: giraRadar 2s linear infinite;
+}
+
+.efe {
+    fill: #f29100;
+}
+
+.circulo {
+    stroke: #08d8e3;
+    stroke-linecap: round;
+    stroke-width: 4.3px;
+}
+.ubiUno{
+    animation: hide 1.5s linear infinite;
+}
+.ubiDos{
+    animation: hide 1.5s linear 1s infinite;
+}
+
+@keyframes giraRadar {
+    from {
+        transform: rotateZ(0deg);
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes hide {
+    0% {
+        opacity: 1;
+    }
+    66%{
+        opacity: 0;
+    }
+}

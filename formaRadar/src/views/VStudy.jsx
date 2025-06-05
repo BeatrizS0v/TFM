@@ -6,6 +6,7 @@ import { getStudiesById } from "../extras/api";
 import { getComments } from "../extras/api";
 import CommentCarousel from "../components/CommentCarousel.jsx";
 import Favourite from "../components/Favourite.jsx";
+import Loading from "../components/Loading.jsx";
 
 const VStudy = () => {
   const [loading, setLoading] = useState(true);
@@ -14,6 +15,8 @@ const VStudy = () => {
   const [dataComments, setDataComments] = useState([]);
   const { id } = useParams();
   const {favs} = useContext(AuthContext);
+
+  const favourite=favs.find((fav)=> fav.study_id===data.study_id)
 
   useEffect(() => {
     const fetchStudy = async () => {
@@ -37,7 +40,9 @@ const VStudy = () => {
   }, [id]);
 
   if (loading) {
-    return <div className="cont">Cargando...</div>;
+    return <div className="cont">
+      <Loading/>
+    </div>;
   }
   return (
     <div className="cont">
@@ -45,7 +50,7 @@ const VStudy = () => {
         <div className="title_study_b row">
           <h2 className="col-8">{data.study}</h2>
           <div className="col-3" style={{marginTop: "5px"}}>
-            <Favourite id_fav={favs.fav_id} dataStudy={data}/>
+            <Favourite id_fav={favourite?.fav_id} dataStudy={data}/>
           </div>
         </div>
         <div className="row">

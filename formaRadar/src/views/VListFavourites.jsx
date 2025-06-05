@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getFavouritesById } from "../extras/api";
 import { getStudies } from "../extras/api";
+import Loading from "../components/Loading";
 
 const VListFavourites = () => {
   const [loading, setLoading] = useState(true);
@@ -29,7 +30,6 @@ const VListFavourites = () => {
           favStudyIds.has(study.study_id)
         );
         setFilteredStudies(filtered);
-        console.log(filtered);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -41,7 +41,7 @@ const VListFavourites = () => {
   }, [id]);
 
   if (loading) {
-    return <div className="cont">Cargando...</div>;
+    return <div className="cont"><Loading/> </div>;
   }
 
   return (

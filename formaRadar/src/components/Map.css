@@ -5,6 +5,7 @@
 }
 .cls-1{
     fill: var(--color-fondo-2);
+    cursor: pointer;
 }
 .cls-2{
     fill: var(--color-primario);
@@ -14,5 +15,5 @@
     fill: var(--color-acento);
 }
 .selected{
-    fill: var(--color-acento)
+    fill: var(--color-acento);
 }

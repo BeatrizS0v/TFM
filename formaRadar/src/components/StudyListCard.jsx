@@ -1,4 +1,3 @@
-import react from "../assets/react.svg";
 import React from "react";
 import "./StudyListCard.css";
 import { Link } from "react-router-dom";
@@ -8,6 +7,8 @@ import Favourite from "../components/Favourite.jsx";
 
 const StudyListCard = React.memo(({ data, rate, numComments }) => {
     const {favs} = useContext(AuthContext);
+
+    const favourite=favs.find((fav)=> fav.study_id===data.study_id)
     
   return (
     <div className="card card_list grid-item">
@@ -61,7 +62,7 @@ const StudyListCard = React.memo(({ data, rate, numComments }) => {
               <p className="rate">{rate}</p>
             </div>
             <div className="bookmark_list" style={{marginTop: "5px"}}>
-            <Favourite id_fav={favs.fav_id} dataStudy={data}/>
+            <Favourite id_fav={favourite?.fav_id} dataStudy={data}/>
           </div>
           </div>
         </div>

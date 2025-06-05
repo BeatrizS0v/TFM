@@ -5,8 +5,9 @@
 .card_study_f{
     color: var(--color-texto);
     width: 600px;
-    margin: 120px 20px !important;
+    margin: 120px 20px 0px 40px !important;
     position: relative;
+    height: auto;
 }
 .info_study_fav p{
     text-align:justify;
@@ -91,7 +92,7 @@
 .flip-container {
   perspective: 2000px;
   width: 600px;
-  height: 800px;
+  height: 700px;
   position: relative;
   background: transparent;
   border: none;

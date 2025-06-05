@@ -1,8 +1,8 @@
 import StudyListCard from "../components/StudyListCard";
 import { useFilteredStudies } from "../hooks/useFilteredStudies";
 import { useComments } from "../hooks/useComments";
-
 import { useMemo } from "react";
+import Loading from "../components/Loading";
 
 
 const VListStudies = () => {
@@ -22,7 +22,7 @@ const VListStudies = () => {
         color: "white",
       }}
     >
-            {loading && <p>Cargando...</p>}
+            {loading && <Loading/>}
             {error && <p>Error: {error}</p>}
            {" "}
       {filteredStudies.map((study) => (

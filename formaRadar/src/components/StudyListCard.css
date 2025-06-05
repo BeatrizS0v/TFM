@@ -71,6 +71,9 @@
     justify-content: space-between;
     width: 280px;
     padding: 0px 30px;
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
 }
 .num{
     background-color: var(--color-acento);

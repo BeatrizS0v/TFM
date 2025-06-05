@@ -8,6 +8,7 @@ import { optionsLocations } from "../extras/filtros";
 import { FilterContext } from "../hooks/FilterContext.jsx";
 
 const FiltersComponent = () => {
+
   const {
     selectedAreas,
     selectedCenter,
@@ -62,7 +63,7 @@ const FiltersComponent = () => {
       </div>
       <div className="column-2">
         <div className="map_filter">
-          <Map />
+          <Map/>
         </div>
 
         <MultiSelect

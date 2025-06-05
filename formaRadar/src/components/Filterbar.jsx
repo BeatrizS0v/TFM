@@ -1,4 +1,4 @@
-import user from "../assets/user.png";
+import avatar from "../assets/avatar.png";
 import logo from "../assets/logo.png";
 import "./Filterbar.css";
 import Map from "./Map";
@@ -8,14 +8,15 @@ import Filters from "./Filters";
 import { FilterContext } from "../hooks/FilterContext.jsx";
 import { useFilteredStudies } from "../hooks/useFilteredStudies.js";
 import { Link } from "react-router-dom";
+import { AuthContext } from '../hooks/AuthContext';
 
 const Filterbar = () => {
   const [showMap, setShowMap] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const { searchTerm, updateTermSearch } = useContext(FilterContext);
-  const { numFilters, numResults } =
-    useFilteredStudies();
+  const { numFilters, numResults } = useFilteredStudies();
+  const {user} = useContext(AuthContext);
 
   //mostrar el mapa
   const handleMap = () => {
@@ -86,7 +87,7 @@ const Filterbar = () => {
         </div>
         <img
           className="icon icon_profile col-12 col-sm-6 col-lg-1"
-          src={user}
+          src={user? user.avatar: avatar}
           alt="Foto de perfil"
           onClick={() => setShowProfile(!showProfile)}
         />

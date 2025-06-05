@@ -9,7 +9,8 @@ import { getComments } from "../extras/api";
 const StudyFavCard = ({ data }) => {
   const [side, setSide] = useState(true);
   const [dataComments, setDataComments]=useState([]);
-    const {favs} = useContext(AuthContext);
+  const {favs} = useContext(AuthContext);
+  const [error, setError] = useState(null);
 
     useEffect(() => {
       const fetchComments = async () => {
@@ -19,13 +20,16 @@ const StudyFavCard = ({ data }) => {
           setDataComments(comments);
         } catch (err) {
           setError(err.message);
+          console.log(error);
         } finally {
 
         }
       };
       fetchComments();
       
-    }, [data]);
+    }, [data.study_id]);
+
+    const favourite=favs.find((fav)=> fav.study_id===data.study_id)
 
   return (
     <div className="fav">
@@ -48,7 +52,7 @@ const StudyFavCard = ({ data }) => {
                 <h2>{data.study}</h2>
               </Link>
               <div className="bookmark_study" style={{marginTop: "5px"}}>
-            <Favourite id_fav={favs.fav_id} dataStudy={data}/>
+            <Favourite id_fav={favourite?.fav_id} dataStudy={data}/>
           </div>
             </div>
             <p className="text_study_f">
@@ -135,9 +139,6 @@ const StudyFavCard = ({ data }) => {
               >
                 <h2>{data.study}</h2>
               </Link>
-              <div className="bookmark_study" style={{marginTop: "5px"}}>
-            <Favourite id_fav={favs.fav_id} dataStudy={data}/>
-          </div>
             </div>
             <div className="info_study_fav">
               <h3>Centro:</h3>
