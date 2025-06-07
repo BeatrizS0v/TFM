@@ -4,9 +4,13 @@ import { Link } from "react-router-dom";
 import { useContext} from 'react';
 import { AuthContext } from '../hooks/AuthContext';
 import Favourite from "../components/Favourite.jsx";
+import { useComments } from "../hooks/useComments.js";
 
-const StudyListCard = React.memo(({ data, rate, numComments }) => {
+const StudyListCard = React.memo(({ data }) => {
     const {favs} = useContext(AuthContext);
+    const {rate, numComments}=useComments(data.study_id);
+
+    console.log(numComments)
 
     const favourite=favs.find((fav)=> fav.study_id===data.study_id)
     

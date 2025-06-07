@@ -3,18 +3,18 @@ import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState} from 'react';
 import { AuthContext } from '../hooks/AuthContext';
 import { getStudiesById } from "../extras/api";
-import { getComments } from "../extras/api";
 import CommentCarousel from "../components/CommentCarousel.jsx";
 import Favourite from "../components/Favourite.jsx";
 import Loading from "../components/Loading.jsx";
+import { useComments } from "../hooks/useComments.js";
 
 const VStudy = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [data, setData] = useState({});
-  const [dataComments, setDataComments] = useState([]);
   const { id } = useParams();
   const {favs} = useContext(AuthContext);
+  const {rate, dataComments, loadingComments}=useComments(id);
 
   const favourite=favs.find((fav)=> fav.study_id===data.study_id)
 
@@ -22,13 +22,8 @@ const VStudy = () => {
     const fetchStudy = async () => {
       setLoading(true);
       try {
-        const [dataStudy, Comments] = await Promise.all([
-          getStudiesById(id),
-          getComments(id),
-        ]);
+        const dataStudy= await getStudiesById(id);
         setData(dataStudy);
-        setDataComments(Comments);
-        console.log("esto", Comments);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -39,7 +34,7 @@ const VStudy = () => {
     
   }, [id]);
 
-  if (loading) {
+  if (loading||loadingComments) {
     return <div className="cont">
       <Loading/>
     </div>;
@@ -99,7 +94,8 @@ const VStudy = () => {
               {data.duration} años
             </p>
             <p className="text_study">
-              <strong className="title_study">Valoración: </strong>vvvv
+              <strong className="title_study">Valoración: </strong>
+              {rate}
             </p>
             <p className="text_study">
               <strong className="title_study">Precio: </strong>

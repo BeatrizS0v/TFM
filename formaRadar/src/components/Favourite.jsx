@@ -4,14 +4,14 @@ import { AuthContext } from "../hooks/AuthContext";
 import { deleteFavourites } from "../extras/api";
 import { createFavourite } from "../extras/api";
 import ProfileBar from "../components/ProfileBar.jsx";
+import { SidebarContext } from "../hooks/SidebarContext.jsx";
 
 const Favourite = ({ id_fav, dataStudy }) => {
   const { user } = useContext(AuthContext);
   const [data, setData] = useState([]);
   const [fav, setFav] = useState(false);
-  const [showProfileBar, setShowProfileBar] = useState(false);
-
-  console.log(id_fav);
+  // const [showProfileBar, setShowProfileBar] = useState(false);
+  const {openSidebar}=useContext(SidebarContext);
 
   useEffect(() => {
     setFav(!!id_fav);
@@ -45,7 +45,7 @@ const Favourite = ({ id_fav, dataStudy }) => {
     if (user) {
       fav ? deleteFavourite(id_fav) : postFavourite(user.user_id, dataStudy);
     } else {
-      setShowProfileBar(true);
+      openSidebar();
       alert("Inicia sesión para poder guardar el estudio en favoritos");
     }
   };
@@ -73,7 +73,6 @@ const Favourite = ({ id_fav, dataStudy }) => {
           </g>
         </g>
       </svg>
-      {showProfileBar && <ProfileBar />}
     </>
   );
 };

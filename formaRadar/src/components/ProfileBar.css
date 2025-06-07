@@ -1,7 +1,6 @@
 .inicio{
     background-color: var(--color-fondo-1);
     color: var(--color-texto);
-    box-shadow: 0 0 10px 1px var(--color-primario);
     z-index: 200;
     position: fixed;
     top: 0;

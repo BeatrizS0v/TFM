@@ -56,7 +56,7 @@ const Profile = () => {
             <img className='logo_perfil' src={user.avatar} alt='Foto de perfil'></img>
             <div className="info_perfil">
                 <p className='text_perfil'>{user.name} {user.surname}</p>
-                <p className='button text_perfil'>Editar perfil</p>
+                <p className='button text_perfil'><Link to={'/edituser'}>Editar perfil</Link></p>
             </div>
             <div className="info_perfil">
                 <p className='text_perfil'>Fecha de nacimiento: {user.date_birth}</p>

@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import './Login.css';
 import { AuthContext } from '../hooks/AuthContext';
 import {getUsers} from '../extras/api';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail]=useState('');
@@ -47,6 +48,7 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     />
                 <button type="submit" style={{margin: "20px"}}>Iniciar sesión</button>
+                <p>¿No tienes una cuenta? <Link to={"/signup"}>Regístrate</Link></p>
                 </div>
             </form>
         </div>

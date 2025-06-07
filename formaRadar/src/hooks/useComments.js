@@ -1,28 +1,32 @@
 import { useState, useEffect } from "react";
 import { getComments } from "../extras/api";
 
-export const useComments = (ids) => {
-  const [data, setData] = useState({});
+export const useComments = (id) => {
+  const [rate, setRate] = useState();
+  const [numComments, setNumComments]=useState();
+  const [dataComments, setDataComments]=useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchAll = async () => {
-      const results = {};
-      for (const id of ids) {
+      setLoading(true);
         try {
           const comments = await getComments(id);
-          const numComments = comments.length;
+          const numCom = comments.length;
           const total = comments.reduce((acc, val) => acc + val.rating, 0);
-          const rate = comments.length > 0 ? Number((total / comments.length).toFixed(2)) : 0;
-          results[id] = { rate, numComments };
+          const rateCom = comments.length > 0 ? Number((total / comments.length).toFixed(2)) : 0;
+          setDataComments(comments);
+          setNumComments(numCom);
+          setRate(rateCom);
         } catch (err) {
-          results[id] = { rate: 0, numComments: 0 };
+          setError("Error al cargar comentarios");
+        } finally{
+          setLoading(false);
         }
       }
-      setData(results);
-    };
+    fetchAll();
+  }, [id]);
 
-    if (ids.length > 0) fetchAll();
-  }, [ids]);
-
-  return data;
+  return {rate, numComments, dataComments, loadingComments:loading};
 };

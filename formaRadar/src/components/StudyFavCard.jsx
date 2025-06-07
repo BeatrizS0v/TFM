@@ -4,32 +4,21 @@ import { AuthContext } from '../hooks/AuthContext';
 import Favourite from "../components/Favourite.jsx";
 import { Link } from "react-router-dom";
 import CommentCarousel from "./CommentCarousel";
-import { getComments } from "../extras/api";
+import { useComments } from "../hooks/useComments.js";
+import Loading from "./Loading.jsx";
 
 const StudyFavCard = ({ data }) => {
   const [side, setSide] = useState(true);
-  const [dataComments, setDataComments]=useState([]);
+  const {rate, dataComments, loadingComments}=useComments(data.study_id);
   const {favs} = useContext(AuthContext);
-  const [error, setError] = useState(null);
-
-    useEffect(() => {
-      const fetchComments = async () => {
-
-        try {
-          const comments= await getComments(data.study_id)
-          setDataComments(comments);
-        } catch (err) {
-          setError(err.message);
-          console.log(error);
-        } finally {
-
-        }
-      };
-      fetchComments();
-      
-    }, [data.study_id]);
 
     const favourite=favs.find((fav)=> fav.study_id===data.study_id)
+
+    if(loadingComments){
+      return <div className="cont">
+      <Loading/>
+    </div>;
+    }
 
   return (
     <div className="fav">
@@ -83,7 +72,7 @@ const StudyFavCard = ({ data }) => {
                 </p>
                 <p>
                   <strong>Valoración: </strong>
-                  {data.location}
+                  {rate}
                 </p>
               </div>
               <div className="info_study_right">
@@ -108,11 +97,11 @@ const StudyFavCard = ({ data }) => {
             <div className="voltear" onClick={() => setSide(false)}>
               <svg
                 id="svg8"
-                clip-rule="evenodd"
+                clipRule="evenodd"
                 className="arrow"
-                fill-rule="evenodd"
-                stroke-linejoin="round"
-                stroke-miterlimit="2"
+                fillRule="evenodd"
+                strokeLinejoin="round"
+                strokeMiterlimit="2"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:svg="http://www.w3.org/2000/svg"
@@ -155,11 +144,11 @@ const StudyFavCard = ({ data }) => {
             <div className="voltear" onClick={() => setSide(true)}>
               <svg
                 id="svg8"
-                clip-rule="evenodd"
+                clipRule="evenodd"
                 className="arrow"
-                fill-rule="evenodd"
-                stroke-linejoin="round"
-                stroke-miterlimit="2"
+                fillRule="evenodd"
+                strokeLinejoin="round"
+                strokeMiterlimit="2"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:svg="http://www.w3.org/2000/svg"

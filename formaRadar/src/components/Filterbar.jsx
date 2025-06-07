@@ -1,7 +1,6 @@
 import avatar from "../assets/avatar.png";
 import logo from "../assets/logo.png";
 import "./Filterbar.css";
-import Map from "./Map";
 import { useState, useContext } from "react";
 import ProfileBar from "./ProfileBar";
 import Filters from "./Filters";
@@ -9,25 +8,35 @@ import { FilterContext } from "../hooks/FilterContext.jsx";
 import { useFilteredStudies } from "../hooks/useFilteredStudies.js";
 import { Link } from "react-router-dom";
 import { AuthContext } from '../hooks/AuthContext';
+import MapBar from "./MapBar.jsx";
+import { SidebarContext } from "../hooks/SidebarContext.jsx";
 
 const Filterbar = () => {
   const [showMap, setShowMap] = useState(false);
-  const [showProfile, setShowProfile] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
   const { searchTerm, updateTermSearch } = useContext(FilterContext);
-  const { numFilters, numResults } = useFilteredStudies();
+  const { filteredStudies, numFilters, numResults } = useFilteredStudies();
   const {user} = useContext(AuthContext);
+  const {toggleSidebar, isOpen}=useContext(SidebarContext);
+
+  //contar el número de localidades diferentes del array
+  console.log(isOpen);
+  const ubis=filteredStudies.map(study=> study.location);
+  const ubisUnique=new Set(filteredStudies.map(study=> study.location));
+  const numUbis=ubisUnique.size;
 
   //mostrar el mapa
   const handleMap = () => {
     if (showMap) {
       return (
         <div className="window_map card">
-          <Map />
+          <MapBar locations={ubis}/>
+          <p style={{position: "absolute", bottom: "-10px", right: "10px", textAlign: "right"}}>{numResults} resultados de<br/> {numUbis} provincias diferentes</p>
         </div>
       );
     }
   };
+
 
   //mostrar el componente de filtros
   const handleFilters = () => {
@@ -89,10 +98,9 @@ const Filterbar = () => {
           className="icon icon_profile col-12 col-sm-6 col-lg-1"
           src={user? user.avatar: avatar}
           alt="Foto de perfil"
-          onClick={() => setShowProfile(!showProfile)}
+          onClick={toggleSidebar}
         />
       </div>
-      {showProfile && <ProfileBar closeProfile={() => setShowProfile(false)} />}
       {handleFilters()}
     </div>
   );
