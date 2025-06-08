@@ -1,5 +1,5 @@
 import "./VStudy.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useContext, useEffect, useState} from 'react';
 import { AuthContext } from '../hooks/AuthContext';
 import { getStudiesById } from "../extras/api";
@@ -13,7 +13,7 @@ const VStudy = () => {
   const [error, setError] = useState("");
   const [data, setData] = useState({});
   const { id } = useParams();
-  const {favs} = useContext(AuthContext);
+  const {favs, user} = useContext(AuthContext);
   const {rate, dataComments, loadingComments}=useComments(id);
 
   const favourite=favs.find((fav)=> fav.study_id===data.study_id)
@@ -107,9 +107,12 @@ const VStudy = () => {
             </p>
           </div>
         </div>
-        <h3 className="title_study">Comentarios de antiguos alumnos:</h3>
+        <div style={{width: "60%", display: "flex", justifyContent: "space-between"}}>
+          <h3 className="title_study">Comentarios de antiguos alumnos:</h3>
+          {user && <p style={{width: "200px", paddingTop: "10px", textAlign: "right"}}><Link to={`/studies/${data.study_id}/createcomment`} state={{data}} className="link">Añadir comentario</Link> </p>}
+        </div>
         <div style={{width: "60%"}}>
-        <CommentCarousel comments={dataComments} carousel_id={data.study_id}/>
+          <CommentCarousel comments={dataComments} carousel_id={data.study_id}/>
         </div>
       </div>
     </div>

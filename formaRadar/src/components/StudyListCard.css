@@ -60,6 +60,8 @@
     transform: rotateZ(-90deg);
     border-radius: 0 0 20px 20px;
     color: var(--color-fondo-1);
+    text-align: center;
+    padding-top: 2px;
 }
 .data_card{
     display: flex;

@@ -48,7 +48,8 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     />
                 <button type="submit" style={{margin: "20px"}}>Iniciar sesión</button>
-                <p>¿No tienes una cuenta? <Link to={"/signup"}>Regístrate</Link></p>
+                {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+                <p>¿No tienes una cuenta? <Link to={"/signup"} className='link'>Regístrate</Link></p>
                 </div>
             </form>
         </div>

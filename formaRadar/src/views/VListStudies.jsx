@@ -6,7 +6,6 @@ import Loading from "../components/Loading";
 
 const VListStudies = () => {
   const { filteredStudies, loading, error } = useFilteredStudies();
-  const studyIds = useMemo(() => filteredStudies.map(s => s.study_id), [filteredStudies]);
 
     if (loading) {
     return <div className="cont">
@@ -28,15 +27,17 @@ const VListStudies = () => {
         gridTemplateColumns: "repeat(2, 1fr)",
         gap: "10px",
         color: "white",
-        width: "100vw",
       }}
     >
-      {filteredStudies.map((study) => (
-        <StudyListCard
-          key={study.study_id}
-          data={study}
-        />
-      ))}
+      
+{!filteredStudies || filteredStudies.length === 0 ? (
+      <p style={{display: "flex", justifyContent: "center", fontSize: "large"}}>No se han encontrado estudios</p>
+    ) : (
+      filteredStudies.map((study) => (
+        <StudyListCard key={study.study_id} data={study} />
+      ))
+    )}
+
       </div>
   );
 };

@@ -15,6 +15,8 @@ import { useEffect } from "react";
 import VSignUp from "./views/VSignUp.jsx";
 import VEditUser from "./views/VEditUser.jsx";
 import { SidebarProvider } from "./hooks/SidebarContext.jsx";
+import PrivateRoutes from "./components/PrivateRoutes.jsx";
+import VCreateComment from "./views/VCreateComment.jsx";
 
 function App() {
   return (
@@ -45,9 +47,22 @@ function AppContent() {
             <Route path="/" element={<VLanding />} />
             <Route path="/studies" element={<VListStudies />} />
             <Route path="/studies/:id" element={<VStudy />} />
-            <Route path="/studies/favourites/:id" element={<VListFavourites />} />
+            <Route path="/studies/favourites/:id" element={
+              <PrivateRoutes>
+                <VListFavourites />
+              </PrivateRoutes>
+            } />
             <Route path="/signup" element={<VSignUp />} />
-            <Route path="/edituser" element={<VEditUser />} />
+            <Route path="/edituser" element={
+              <PrivateRoutes>
+                  <VEditUser />
+              </PrivateRoutes>
+            }/>
+            <Route path="/studies/:id/createcomment" element={
+              <PrivateRoutes>
+                <VCreateComment/>
+              </PrivateRoutes>
+            }/>
           </Routes>
         </FilterProvider>
       </AuthProvider>

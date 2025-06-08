@@ -27,6 +27,7 @@ const VEditUser = () => {
         };
     await modifyUser(newUser);
     console.log("Usuario editado:", newUser);
+    alert("Usuario editado con éxito");
     }else{
       alert("Comprueba que las contraseñas coincidan");
     }

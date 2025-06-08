@@ -24,6 +24,7 @@ const VSignUp = () => {
         };
     await createUser(newUser);
     console.log("Nuevo usuario:", newUser);
+    alert("Usuario creado con éxito");
     }else{
       alert("Comprueba que las contraseñas coincidan");
     }

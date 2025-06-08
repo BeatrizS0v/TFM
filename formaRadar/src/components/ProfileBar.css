@@ -35,7 +35,7 @@
     fill: var(--color-texto);
 }
 .close:hover{
-    background-color: rgb(77, 80, 95);
+    background-color: var(--color-hover);
 }
 .close:hover .close_icon{
     fill: var(--color-primario);

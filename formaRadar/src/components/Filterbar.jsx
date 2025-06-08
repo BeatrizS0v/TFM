@@ -17,10 +17,9 @@ const Filterbar = () => {
   const { searchTerm, updateTermSearch } = useContext(FilterContext);
   const { filteredStudies, numFilters, numResults } = useFilteredStudies();
   const {user} = useContext(AuthContext);
-  const {toggleSidebar, isOpen}=useContext(SidebarContext);
+  const {toggleSidebar}=useContext(SidebarContext);
 
   //contar el número de localidades diferentes del array
-  console.log(isOpen);
   const ubis=filteredStudies.map(study=> study.location);
   const ubisUnique=new Set(filteredStudies.map(study=> study.location));
   const numUbis=ubisUnique.size;
@@ -74,7 +73,7 @@ const Filterbar = () => {
           style={{ color: "white" }}
         />
         <Link to={'/studies'} className="col-12 col-sm-4 col-lg-1">
-          <button>Buscar</button>
+          <button onClick={() => setShowFilters(false)}>Buscar</button>
         </Link>
         <div
           className="locations access col-12 col-sm-2 col-lg-1"

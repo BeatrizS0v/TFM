@@ -70,7 +70,7 @@ html, body{
     height: 40px;
 }
 .access:hover{
-    background-color: rgb(59, 76, 94);
+    background-color: var(--color-hover);
     cursor: pointer;
     border-radius: 50%;
 }

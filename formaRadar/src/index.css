@@ -5,19 +5,20 @@
   --color-fondo-2: #001114;
   --color-texto: #FFFFFF;
   --color-acento: #FFA62B;
+  --color-hover: rgb(59, 76, 94);
 
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  
-
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body{
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .card{
     border-radius: 20px;
@@ -37,8 +38,18 @@
     transition: all 200ms ease;
 }
 .enterText:hover{
-    background-color: rgb(52, 64, 73);
+    background-color: var(--color-hover);
+}
+.enterText:focus{
+    outline: 2px solid var(--color-acento);
+    outline-offset: 3px;
 }
 .cont{
     margin-top: 120px;
+}
+.link{
+    color: var(--color-texto);
+}
+.link:hover{
+    color: var(--color-acento);
 }

@@ -1,0 +1,55 @@
+.createComment{
+    width: 70%;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--color-texto);
+}
+.info_comment{
+    margin: 20px 0px;
+    background-color: var(--color-fondo-1);
+    padding: 20px;
+    border-radius: 20px;
+    padding-bottom: 8px;
+}
+.createComment .enterText{
+    background-color: var(--color-fondo-1);
+    width: 50%;
+    min-width: 300px;
+    height: auto;
+    min-height: 100px;
+    padding: 0px 10px;
+}
+.createComment .enterText:hover{
+    background-color: var(--color-hover);
+}
+
+.createComment label{
+    width: 50%;
+    text-align: left;
+    margin: 10px 0px;
+    padding-left: 10px;
+}
+.input_rate{
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+.input_rate input{
+    background-color: var(--color-fondo-1);
+    height: 40px;
+    width: 60px;
+    padding: 10px;
+    border-radius: 30%;
+    margin-right: 10px;
+    color: var(--color-texto);
+    border: none;
+}
+.input_rate input:hover{
+    background-color: var(--color-hover);
+}
+.input_rate input:focus{
+    outline: 2px solid var(--color-acento);
+    outline-offset: 3px;
+}

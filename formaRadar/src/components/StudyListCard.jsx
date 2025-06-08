@@ -10,10 +10,9 @@ const StudyListCard = React.memo(({ data }) => {
     const {favs} = useContext(AuthContext);
     const {rate, numComments}=useComments(data.study_id);
 
-    console.log(numComments)
-
     const favourite=favs.find((fav)=> fav.study_id===data.study_id)
-    
+
+  if(rate && numComments){
   return (
     <div className="card card_list grid-item">
       <div>
@@ -73,7 +72,8 @@ const StudyListCard = React.memo(({ data }) => {
       </div>
       <div className="etiqueta">{data.type}</div>
     </div>
-  );
+  
+  )};
 });
 
 export default StudyListCard;

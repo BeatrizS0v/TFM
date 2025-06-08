@@ -56,20 +56,20 @@ const Profile = () => {
             <img className='logo_perfil' src={user.avatar} alt='Foto de perfil'></img>
             <div className="info_perfil">
                 <p className='text_perfil'>{user.name} {user.surname}</p>
-                <p className='button text_perfil'><Link to={'/edituser'}>Editar perfil</Link></p>
+                <p className='button text_perfil'><Link to={'/edituser'} className='link'>Editar perfil</Link></p>
             </div>
             <div className="info_perfil">
-                <p className='text_perfil'>Fecha de nacimiento: {user.date_birth}</p>
+                <p className='text_perfil'>Fecha de nacimiento: {new Date(user.date_birth).toLocaleDateString()}</p>
                 <p className='text_perfil'>Correo electrónico: {user.email}</p>
             </div>
             <div className='favourites'>
-                <Link to={`studies/favourites/${user.user_id}`}  style={{ all: "unset", width: "80%"}}>
+                <Link to={`studies/favourites/${user.user_id}`} style={{ all: "unset", width: "80%"}}>
                 <div className='cab_fav' >VER ESTUDIOS FAVORITOS</div></Link>
                 <div className='aps_fav'>
                     {infoFavs()}
                 </div>
             </div>
-            <p className='button signout text_perfil' onClick={handleLogout}>Cerrar sesión</p>
+            <p className='signout text_perfil link' onClick={handleLogout}>Cerrar sesión</p>
             
         </div>
     );

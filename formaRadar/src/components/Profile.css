@@ -32,19 +32,6 @@
     flex-direction: column;
     align-items: center;
 }
-/* .favourites:hover{
-    scrollbar-width: auto;
-    position: absolute;
-    border-radius: 20px;
-}
-.my-scroll-container::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-}
-.my-scroll-container::-webkit-scrollbar-thumb:hover {
-    background: #555;
-} */
-
 .cab_fav{
     background-color: var(--color-secundario);
     height: 50px;
@@ -86,4 +73,6 @@ Link{
     position: absolute;
     bottom: 20px;
     left: 20px;
+    text-decoration: underline;
+    cursor: pointer;
 }
