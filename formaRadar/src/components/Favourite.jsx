@@ -7,9 +7,7 @@ import { SidebarContext } from "../hooks/SidebarContext.jsx";
 
 const Favourite = ({ id_fav, dataStudy }) => {
   const { user, favourites, favs } = useContext(AuthContext);
-  // const [data, setData] = useState([]);
   const [fav, setFav] = useState(false);
-  // const [showProfileBar, setShowProfileBar] = useState(false);
   const {openSidebar}=useContext(SidebarContext);
 
   useEffect(() => {
@@ -28,7 +26,7 @@ const Favourite = ({ id_fav, dataStudy }) => {
       alert("Hubo un error al eliminar de favoritos el estudio");
     }
   };
-console.log(favs);
+
   const postFavourite = async (id_user, dataStudy) => {
     const favourite = {
       fav_id: Math.floor(Math.random() * 10) + 1,
@@ -38,7 +36,7 @@ console.log(favs);
       location: dataStudy.location,
     };
     await createFavourite(favourite);
-    favourites((favs) => [...favs, favourite]);
+    favourites((favs) => Array.isArray(favs) ? [...favs, favourite] : [favourite]);
     setFav(true);
   };
 

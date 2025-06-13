@@ -20,7 +20,7 @@ const VStudy = () => {
   const {openSidebar}=useContext(SidebarContext);
   const {rate, dataComments, loadingComments}=useComments(id);
 
-  const favourite=favs.find((fav)=> fav.study_id===data.study_id)
+  const favourite = Array.isArray(favs) ? favs.find((fav) => fav.study_id === data.study_id) : [];
 
   useEffect(() => {
     const fetchStudy = async () => {

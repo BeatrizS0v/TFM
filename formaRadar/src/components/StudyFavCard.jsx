@@ -13,7 +13,7 @@ const StudyFavCard = ({ data }) => {
   const {rate, dataComments, loadingComments}=useComments(data.study_id);
   const {favs} = useContext(AuthContext);
 
-    const favourite=favs.find((fav)=> fav.study_id===data.study_id)
+    const favourite = Array.isArray(favs) ? favs.find((fav) => fav.study_id === data.study_id) : [];
 
     if(loadingComments){
       return <div className="cont">

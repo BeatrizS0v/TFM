@@ -12,6 +12,7 @@ const Profile = () => {
     };
 
     const infoFavs=()=>{
+        if(Array.isArray(favs)){
         return(
             <>
             {favs.map((fav, index)=>(
@@ -19,7 +20,7 @@ const Profile = () => {
             ))
         }
         </>)
-    }
+    }}
 
     return (
         <div className='content'>

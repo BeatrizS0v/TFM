@@ -11,7 +11,7 @@ const StudyListCard = React.memo(({ data }) => {
     const {favs} = useContext(AuthContext);
     const {rate, numComments}=useComments(data.study_id);
 
-    const favourite=favs.find((fav)=> fav.study_id===data.study_id)
+    const favourite = Array.isArray(favs) ? favs.find((fav) => fav.study_id === data.study_id) : [];
 
   if(rate && numComments){
   return (
