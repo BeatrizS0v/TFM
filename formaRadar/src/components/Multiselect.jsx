@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import "./MultiSelect.css";
+import "./Multiselect.css";
 
 const MultiSelect = ({ options, value=[], onChange, info }) => {
   const [expanded, setExpanded] = useState(false);
