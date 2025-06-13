@@ -1,5 +1,5 @@
 import "./VStudy.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState} from 'react';
 import { AuthContext } from '../hooks/AuthContext';
 import { getStudiesById } from "../extras/api";
@@ -8,13 +8,16 @@ import Favourite from "../components/Favourite.jsx";
 import Loading from "../components/Loading.jsx";
 import { useComments } from "../hooks/useComments.js";
 import StarIcon from "../components/StarIcon.jsx";
+import { SidebarContext } from "../hooks/SidebarContext.jsx";
 
 const VStudy = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [data, setData] = useState({});
+  const navigate=useNavigate();
   const { id } = useParams();
-  const {favs} = useContext(AuthContext);
+  const {user, favs} = useContext(AuthContext);
+  const {openSidebar}=useContext(SidebarContext);
   const {rate, dataComments, loadingComments}=useComments(id);
 
   const favourite=favs.find((fav)=> fav.study_id===data.study_id)
@@ -34,6 +37,16 @@ const VStudy = () => {
     fetchStudy();
     
   }, [id]);
+
+  const addComment=()=>{
+    if(user){
+      navigate(`/studies/${data.study_id}/createcomment`, {state: { data: data}});
+    }
+    else {
+      openSidebar();
+      alert("Inicia sesión para añadir un comentario");
+    }
+  }
 
   if (loading||loadingComments) {
     return <div className="cont">
@@ -110,7 +123,7 @@ const VStudy = () => {
         </div>
         <div style={{width: "60%", display: "flex", justifyContent: "space-between"}}>
           <h3 className="title_study">Comentarios de antiguos alumnos:</h3>
-          <p style={{width: "200px", paddingTop: "10px", textAlign: "right"}}><Link to={`/studies/${data.study_id}/createcomment`} state={{data}} className="link">Añadir comentario</Link> </p>
+          <p className="link" onClick={addComment} style={{width: "200px", paddingTop: "10px", textAlign: "right"}}>Añadir comentario </p>
         </div>
         <div style={{width: "60%"}}>
           <CommentCarousel comments={dataComments} carousel_id={data.study_id}/>

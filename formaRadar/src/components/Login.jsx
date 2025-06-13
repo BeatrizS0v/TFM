@@ -1,14 +1,15 @@
-import { useState, useContext } from 'react';
+import { useState, useContext} from 'react';
 import './Login.css';
 import { AuthContext } from '../hooks/AuthContext';
 import {getUsers} from '../extras/api';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail]=useState('');
     const [password, setPassword]=useState('');
     const [error, setError] = useState('');
     const { login } = useContext(AuthContext);
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -17,6 +18,7 @@ const Login = () => {
         const user = users.find(u => u.email === email && u.password === password);
         if (user) {
             login(user);
+            navigate(from, { replace: true });
         } else {
             setError('Credenciales incorrectas');
         }

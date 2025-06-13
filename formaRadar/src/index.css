@@ -49,6 +49,8 @@ body{
 }
 .link{
     color: var(--color-texto);
+    text-decoration: underline;
+    cursor: pointer;
 }
 .link:hover{
     color: var(--color-acento);
