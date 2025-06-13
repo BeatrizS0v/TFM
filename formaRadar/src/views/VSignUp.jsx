@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { createUser } from "../extras/api";
+import { AuthContext } from "../hooks/AuthContext";
+import user from "../assets/user.png"
 import './VSignUp.css';
 
 const VSignUp = () => {
@@ -9,6 +11,7 @@ const VSignUp = () => {
   const [newEmail, setNewEmail]=useState("");
   const [newPassword, setNewPassword]=useState("");
   const [newPassCheck, setNewPassCheck]=useState("");
+  const { login } = useContext(AuthContext);
 
   const signUp = async ()=>{
     if(newPassword===newPassCheck){
@@ -19,10 +22,11 @@ const VSignUp = () => {
             date_birth: newDate,
             email: newEmail,
             password: newPassword,
-            avatar: "",
+            avatar: user,
             role: "user"
         };
     await createUser(newUser);
+    login(newUser);
     console.log("Nuevo usuario:", newUser);
     alert("Usuario creado con éxito");
     }else{

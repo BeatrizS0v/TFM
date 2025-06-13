@@ -1,40 +1,15 @@
 import react from '../assets/react.svg'
 import './Profile.css'
-import { useContext, useEffect, useState} from 'react';
+import { useContext} from 'react';
 import { AuthContext } from '../hooks/AuthContext';
-import {getFavouritesById} from '../extras/api';
 import { Link } from 'react-router-dom';
-import Login from './Login';
 
 const Profile = () => {
-    const {user, logout} = useContext(AuthContext);
-    const [loading, setLoading]=useState(true);
-    const [favs, setFavs]=useState([]);
+    const {user, logout, favs} = useContext(AuthContext);
 
     const handleLogout = () => {
         logout();
     };
-
-    // const dropDownFavs=()=>{
-    //     console.log("dropdown");
-    // };
-
-    useEffect(()=>{
-        const getData=async()=>{
-            setLoading(true);
-            try{
-                if(user){
-                    const dataFavs= await getFavouritesById(user.user_id);
-                    setFavs(dataFavs);
-                }
-            } catch (error) {
-                console.error("Error al obtener favoritos del usuario:", error);
-            } finally {
-                setLoading(false);
-            }
-        }
-        getData()
-    }, [user]);
 
     const infoFavs=()=>{
         return(
@@ -46,11 +21,6 @@ const Profile = () => {
         </>)
     }
 
-    if(loading){
-        return(
-            <p>Cargando...</p>
-        )
-    }
     return (
         <div className='content'>
             <img className='logo_perfil' src={user.avatar} alt='Foto de perfil'></img>
@@ -68,6 +38,7 @@ const Profile = () => {
                 <div className='aps_fav'>
                     {infoFavs()}
                 </div>
+                <div style={{backgroundColor: "var(--color-fondo-1)", height: "30px", width: "100%"}}></div>
             </div>
             <p className='signout text_perfil link' onClick={handleLogout}>Cerrar sesión</p>
             

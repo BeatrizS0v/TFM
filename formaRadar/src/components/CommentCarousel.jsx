@@ -1,5 +1,6 @@
 import React from 'react';
 import './CommentCarousel.css';
+import StarIcon from './StarIcon';
 
 
 const CommentCarousel = ({ comments, carousel_id }) => {
@@ -22,7 +23,13 @@ const CommentCarousel = ({ comments, carousel_id }) => {
       <div className="carousel-inner">
         {comments.map((comment, index) => (
           <div key={index} className={`carousel-item ${index === 0 ? 'active' : ''}`}>
-            <h4 className="comment_title">{comment.user}</h4>
+            <div style={{display: "flex", justifyContent: "space-between"}}>
+              <h4 className="comment_title">{comment.user}</h4>
+              <div style={{display: "flex", alignItems: "center", fontSize: "large"}}>
+                {comment.rating}&nbsp;&nbsp;
+                <StarIcon size="25px"/>
+              </div>
+            </div>
             <p>{comment.comment}</p>
           </div>
         ))}

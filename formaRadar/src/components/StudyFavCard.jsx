@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import CommentCarousel from "./CommentCarousel";
 import { useComments } from "../hooks/useComments.js";
 import Loading from "./Loading.jsx";
+import StarIcon from "./StarIcon.jsx";
 
 const StudyFavCard = ({ data }) => {
   const [side, setSide] = useState(true);
@@ -72,7 +73,7 @@ const StudyFavCard = ({ data }) => {
                 </p>
                 <p>
                   <strong>Valoración: </strong>
-                  {rate}
+                  {rate} <StarIcon size="20px"/>
                 </p>
               </div>
               <div className="info_study_right">

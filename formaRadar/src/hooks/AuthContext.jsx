@@ -13,6 +13,8 @@ export const AuthProvider = ({ children }) => {
       setFavs([]); 
     };
 
+    const favourites =(favData)=> setFavs(favData);
+
   useEffect(() => {
     const fetchFavourites = async () => {
       if (user) {
@@ -29,7 +31,7 @@ export const AuthProvider = ({ children }) => {
   }, [user]);
 
     return (
-        <AuthContext.Provider value={{ user, favs, login, logout }}>
+        <AuthContext.Provider value={{ user, favs, favourites, login, logout }}>
             {children}
         </AuthContext.Provider>
     );

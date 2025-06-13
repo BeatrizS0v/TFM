@@ -3,12 +3,11 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../hooks/AuthContext";
 import { deleteFavourites } from "../extras/api";
 import { createFavourite } from "../extras/api";
-import ProfileBar from "../components/ProfileBar.jsx";
 import { SidebarContext } from "../hooks/SidebarContext.jsx";
 
 const Favourite = ({ id_fav, dataStudy }) => {
-  const { user } = useContext(AuthContext);
-  const [data, setData] = useState([]);
+  const { user, favourites, favs } = useContext(AuthContext);
+  // const [data, setData] = useState([]);
   const [fav, setFav] = useState(false);
   // const [showProfileBar, setShowProfileBar] = useState(false);
   const {openSidebar}=useContext(SidebarContext);
@@ -20,14 +19,16 @@ const Favourite = ({ id_fav, dataStudy }) => {
   const deleteFavourite = async (id_fav) => {
     try {
       await deleteFavourites(id_fav);
-      setData((favs) => favs.filter((fav) => fav.fav_id !== id_fav));
+      favourites((favs) => favs.filter((fav) => fav.fav_id !== id_fav));
+      
+      console.log(id_fav);
       setFav(false);
     } catch (error) {
       console.error(error);
       alert("Hubo un error al eliminar de favoritos el estudio");
     }
   };
-
+console.log(favs);
   const postFavourite = async (id_user, dataStudy) => {
     const favourite = {
       fav_id: Math.floor(Math.random() * 10) + 1,
@@ -37,7 +38,7 @@ const Favourite = ({ id_fav, dataStudy }) => {
       location: dataStudy.location,
     };
     await createFavourite(favourite);
-    setData((favs) => [...favs, favourite]);
+    favourites((favs) => [...favs, favourite]);
     setFav(true);
   };
 

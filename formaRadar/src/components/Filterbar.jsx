@@ -2,7 +2,6 @@ import avatar from "../assets/avatar.png";
 import logo from "../assets/logo.png";
 import "./Filterbar.css";
 import { useState, useContext } from "react";
-import ProfileBar from "./ProfileBar";
 import Filters from "./Filters";
 import { FilterContext } from "../hooks/FilterContext.jsx";
 import { useFilteredStudies } from "../hooks/useFilteredStudies.js";
@@ -48,12 +47,11 @@ const Filterbar = () => {
     <div className="filterbar container-fluid">
       <div className="row bar">
         <Link className="col-12 col-lg-2" to={`/`}>
-          <img className="logo col-12 col-lg-2" src={logo} alt=""></img>
+          <img className="logo" src={logo} alt=""></img>
         </Link>
         <div
           className="filters access col-12 col-sm-2 col-lg-1"
-          onClick={() => setShowFilters(!showFilters)}
-        >
+          onClick={() => setShowFilters(!showFilters)}>
           <svg
             id="icons"
             viewBox="0 0 64 64"
@@ -69,10 +67,10 @@ const Filterbar = () => {
           value={searchTerm}
           onChange={(e) => updateTermSearch(e.target.value)}
           placeholder="Buscar estudios..."
-          className="search enterText col-12 col-sm-6 col-lg-5"
+          className="search enterText col-12 col-sm-4 col-lg-5"
           style={{ color: "white" }}
         />
-        <Link to={'/studies'} className="col-12 col-sm-4 col-lg-1">
+        <Link to={'/studies'} className="col-12 col-sm-2 col-lg-1">
           <button onClick={() => setShowFilters(false)}>Buscar</button>
         </Link>
         <div

@@ -25,6 +25,17 @@ const FiltersComponent = () => {
     updateTermSearch
   } = useContext(FilterContext);
 
+  const [tempPrice, setTempPrice] = useState(maxPrice);
+
+  const handlePriceChange = (e) => {
+    setTempPrice(e.target.value);
+
+    clearTimeout(window.priceTimeout);
+    window.priceTimeout = setTimeout(() => {
+      updateMaxPrice(e.target.value);
+    }, 300);
+  };
+
   return (
     <div className="cont_filters">
       <div className="column-1">
@@ -51,15 +62,15 @@ const FiltersComponent = () => {
           info="Todos los tipos de estudios"
         />
         <div className="select_price">
-          <label>Precio máximo (und. crédito): {maxPrice}€</label>
-          <input
-            type="range"
-            min="0"
-            max="50"
-            value={maxPrice}
-            onChange={(e) => updateMaxPrice(Number(e.target.value))}
-          />
-        </div>
+        <label>Precio máximo (und. crédito): {tempPrice}€</label>
+        <input
+          type="range"
+          min="0"
+          max="50"
+          value={tempPrice}
+          onChange={handlePriceChange}
+        />
+      </div>
       </div>
       <div className="column-2">
         <div className="map_filter">

@@ -28,7 +28,7 @@ const Login = () => {
 
     return (
         <div className='cont_login'>
-            <p>Bienvenido</p>
+            <p>Bienvenid@</p>
             <form onSubmit={handleLogin}>
                 <div className='formu'>
                 <input

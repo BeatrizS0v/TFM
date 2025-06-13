@@ -22,8 +22,9 @@
     position: relative;
 }
 .logo_uni_card{
-    height: 45px;
-    width: 45px;
+    height: 45px !important;
+    width: 45px !important;
+    object-fit: cover;
     border-radius: 50%;
     background-color: rgb(192, 192, 255);
     margin: 15px 15px 0px 15px;
@@ -32,6 +33,7 @@
     margin: 4px 0px;
     margin-right: 30px;
     height: 100%;
+    font-size: 20px;
     display: flex;
     align-items: center;
     text-align: left;
@@ -87,9 +89,6 @@
 }
 .icon_comments{
     width: 40px;
-}
-.icon_star{
-    width: 35px;
 }
 .rate{
     font-size: large;

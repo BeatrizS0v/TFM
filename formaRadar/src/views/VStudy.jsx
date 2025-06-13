@@ -7,13 +7,14 @@ import CommentCarousel from "../components/CommentCarousel.jsx";
 import Favourite from "../components/Favourite.jsx";
 import Loading from "../components/Loading.jsx";
 import { useComments } from "../hooks/useComments.js";
+import StarIcon from "../components/StarIcon.jsx";
 
 const VStudy = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [data, setData] = useState({});
   const { id } = useParams();
-  const {favs, user} = useContext(AuthContext);
+  const {favs} = useContext(AuthContext);
   const {rate, dataComments, loadingComments}=useComments(id);
 
   const favourite=favs.find((fav)=> fav.study_id===data.study_id)
@@ -95,7 +96,7 @@ const VStudy = () => {
             </p>
             <p className="text_study">
               <strong className="title_study">Valoración: </strong>
-              {rate}
+              {rate}   <StarIcon size="20px"/>
             </p>
             <p className="text_study">
               <strong className="title_study">Precio: </strong>
@@ -109,7 +110,7 @@ const VStudy = () => {
         </div>
         <div style={{width: "60%", display: "flex", justifyContent: "space-between"}}>
           <h3 className="title_study">Comentarios de antiguos alumnos:</h3>
-          {user && <p style={{width: "200px", paddingTop: "10px", textAlign: "right"}}><Link to={`/studies/${data.study_id}/createcomment`} state={{data}} className="link">Añadir comentario</Link> </p>}
+          <p style={{width: "200px", paddingTop: "10px", textAlign: "right"}}><Link to={`/studies/${data.study_id}/createcomment`} state={{data}} className="link">Añadir comentario</Link> </p>
         </div>
         <div style={{width: "60%"}}>
           <CommentCarousel comments={dataComments} carousel_id={data.study_id}/>

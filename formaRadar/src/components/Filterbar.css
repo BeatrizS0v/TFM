@@ -8,7 +8,7 @@ html, body{
     position: fixed;
     top: 0;
     background-color: var(--color-fondo-1);
-    width: 100vw;
+    width: 100%;
     box-shadow: 0 0 5px 0.5px var(--color-primario);
     z-index: 100;
 }
@@ -35,7 +35,6 @@ html, body{
 }
 .logo{
     height: 70px;
-    width: 300px;
     margin: 5px 0px 5px 10px;
     object-fit: contain;
     cursor: pointer;

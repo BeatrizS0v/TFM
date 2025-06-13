@@ -1,16 +1,16 @@
 import "./VListFavourites.css";
 import StudyFavCard from "../components/StudyFavCard";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../hooks/AuthContext";
 import { getFavouritesById } from "../extras/api";
 import { getStudies } from "../extras/api";
 import Loading from "../components/Loading";
 
 const VListFavourites = () => {
   const [loading, setLoading] = useState(true);
+  const {favs}=useContext(AuthContext);
   const [error, setError] = useState("");
-  const [dataFavs, setDataFavs] = useState([]);
-  const [dataStudies, setDataStudies] = useState([]);
   const [filteredStudies, setFilteredStudies] = useState([]);
   const { id } = useParams();
 
@@ -18,13 +18,7 @@ const VListFavourites = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const [favs, studies] = await Promise.all([
-          getFavouritesById(id),
-          getStudies(),
-        ]);
-        setDataFavs(favs);
-        setDataStudies(studies);
-
+        const studies= await getStudies();
         const favStudyIds = new Set(favs.map((fav) => fav.study_id));
         const filtered = studies.filter((study) =>
           favStudyIds.has(study.study_id)
@@ -38,7 +32,7 @@ const VListFavourites = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, [id, favs]);
 
   if (loading) {
     return <div className="cont"><Loading/> </div>;
