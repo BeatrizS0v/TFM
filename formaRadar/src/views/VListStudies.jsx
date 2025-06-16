@@ -1,6 +1,5 @@
 import StudyListCard from "../components/StudyListCard";
 import { useFilteredStudies } from "../hooks/useFilteredStudies";
-import { useMemo } from "react";
 import Loading from "../components/Loading";
 
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import './CommentCarousel.css';
 import StarIcon from './StarIcon';
 

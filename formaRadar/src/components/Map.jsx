@@ -1,11 +1,10 @@
 import "./Map.css";
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { FilterContext } from "../hooks/FilterContext.jsx";
 
 const Map = () => {
     const {selectedLocations, updateLocations } = useContext(FilterContext);
 
-//se añade para poder pintarlo
 const manejarClick = (provincia) => {
   updateLocations(prevSeleccionadas =>{
     return prevSeleccionadas.includes(provincia)

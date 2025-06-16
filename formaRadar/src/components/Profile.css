@@ -28,7 +28,6 @@
 .favourites{
     width: 100%;
     position: relative;
-    /* height: auto; */
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -2,7 +2,8 @@ import { useState, useContext } from "react";
 import { createComment } from "../extras/api";
 import "./VCreateComment.css";
 import { AuthContext } from "../hooks/AuthContext";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import StarIcon from "../components/StarIcon";
 
 const VCreateComment = () => {
   const [newText, setNewText] = useState("");
@@ -10,6 +11,7 @@ const VCreateComment = () => {
   const { user } = useContext(AuthContext);
   const location = useLocation();
   const { data } = location.state ;
+  const navigate = useNavigate();
 
 console.log(data);
 
@@ -26,6 +28,7 @@ console.log(data);
         await createComment(newComment);
         console.log("Nuevo comentario:", newComment);
         alert("Comentario creado con éxito");
+        navigate(`/studies/${data.study_id}`)
       }
   };
 
@@ -54,7 +57,9 @@ console.log(data);
               max="5"
               onChange={(e) => setNewRate(Number(e.target.value))}
             />
-            {"⭐".repeat(newRate)}
+            {[...Array(newRate)].map((elem, index) => (
+                <StarIcon key={index} size="20px"/> 
+            ))}
         </div>
         <button onClick={create}>Publicar</button>
       </div>

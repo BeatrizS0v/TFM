@@ -1,4 +1,3 @@
-import react from '../assets/react.svg'
 import './Profile.css'
 import { useContext} from 'react';
 import { AuthContext } from '../hooks/AuthContext';

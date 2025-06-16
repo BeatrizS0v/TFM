@@ -1,5 +1,4 @@
 import "./Map.css";
-import { useState } from "react";
 
 const MapBar = ({locations}) => {
 

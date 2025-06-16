@@ -1,5 +1,5 @@
 import "./StudyFavCard.css";
-import { useContext, useEffect, useState} from 'react';
+import { useContext, useState} from 'react';
 import { AuthContext } from '../hooks/AuthContext';
 import Favourite from "../components/Favourite.jsx";
 import { Link } from "react-router-dom";

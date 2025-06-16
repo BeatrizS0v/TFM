@@ -1,5 +1,5 @@
 import "./VStudy.css";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState} from 'react';
 import { AuthContext } from '../hooks/AuthContext';
 import { getStudiesById } from "../extras/api";

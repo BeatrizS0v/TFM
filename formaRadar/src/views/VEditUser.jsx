@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import { modifyUser } from "../extras/api";
 import './VSignUp.css';
 import { AuthContext } from "../hooks/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 
 const VEditUser = () => {
@@ -12,6 +13,7 @@ const VEditUser = () => {
   const [newEmail, setNewEmail]=useState(user.email);
   const [newPassword, setNewPassword]=useState(user.password);
   const [newPassCheck, setNewPassCheck]=useState(user.password);
+  const navigate = useNavigate();
 
   const editUser = async ()=>{
     if(newPassword===newPassCheck){
@@ -28,6 +30,7 @@ const VEditUser = () => {
     await modifyUser(newUser);
     console.log("Usuario editado:", newUser);
     alert("Usuario editado con éxito");
+    navigate(`/`);
     }else{
       alert("Comprueba que las contraseñas coincidan");
     }

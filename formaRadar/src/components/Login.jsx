@@ -2,7 +2,7 @@ import { useState, useContext} from 'react';
 import './Login.css';
 import { AuthContext } from '../hooks/AuthContext';
 import {getUsers} from '../extras/api';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail]=useState('');

@@ -1,9 +1,7 @@
-import "./VListFavourites.css";
 import StudyFavCard from "../components/StudyFavCard";
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../hooks/AuthContext";
-import { getFavouritesById } from "../extras/api";
 import { getStudies } from "../extras/api";
 import Loading from "../components/Loading";
 
@@ -39,7 +37,7 @@ const VListFavourites = () => {
   }
 
   return (
-    <div className="conte">
+    <div style={{display: "flex"}}>
       {filteredStudies.map((study) => (
         <StudyFavCard key={study.study_id} data={study} />
       ))}
